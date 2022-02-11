@@ -79,17 +79,21 @@ public LinkedStack toLinkedStack() {
     }
     return temp;
 }
+public static void size() {
+    System.out.println(size);
+}
 public static void main(String[] args) {
     ArrayStack arraystack=new ArrayStack(5);
-    System.out.println("Is stack empty: "+arraystack.isEmpty());
+    //arraystack.size();
+    // System.out.println("Is stack empty: "+arraystack.isEmpty());
     arraystack.push(1);
     arraystack.push(2);
     arraystack.push(3);
     arraystack.push(4);
     arraystack.push(5);
-    // System.out.println("Is stack empty: "+arraystack.isEmpty());
+    //  System.out.println("Is stack empty: "+arraystack.isEmpty());
     // arraystack.printStack();
-    // arraystack.peak();
+    // // arraystack.peak();
     // arraystack.pop();
     // arraystack.printStack();
     //System.out.println(arraystack.toString());
