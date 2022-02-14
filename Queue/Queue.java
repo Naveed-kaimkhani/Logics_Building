@@ -1,7 +1,7 @@
 interface LinkedListQueue{
     public void add(Object obj);
     public Object first();
-    public void remove();
+    public Object remove();
     public int size();
     
 }
@@ -25,18 +25,19 @@ public class Queue implements LinkedListQueue{
            this.prev=prev;
         }
    }
-           
-   public void add(Object obj) {
-    if (head.next==null) {
-      head.next.data=obj;
+    @Override           
+   public void add(Object data) {
+    if (this.head.next==null) {
+      head.next=new Node(data);
       head.prev=head.next;
       ++size;  
     }
     else{
-        head.prev=head.prev.next=new Node(obj,head,head.prev);
+        head.prev=head.prev.next=new Node(data,head,head.prev);
         ++size;
     }
 }
+@Override
 public Object first() {
   if (head.next==null) {
       throw new IllegalStateException("Queue is empty");
@@ -44,15 +45,17 @@ public Object first() {
       return head.next.data;
   }  
 }
-
-public void remove() {
+@Override
+public Object remove() {
     if (head.next==null) {
         throw new IllegalStateException("Queue is empty");
     } else {
         head.next=head.next.next;
         --size;
     }  
+    return head.next.data;
   }
+  @Override
   public int size() {
     if (head.next==null) {
         throw new IllegalStateException("Queue is empty");
@@ -61,5 +64,34 @@ public void remove() {
     }  
   }
   
+  public void to() {
+    if (head.next==null) {
+        throw new IllegalStateException("Queue is empty");
+        
+    }
+    else{
+          //String str="";
+    for (Node i = head.next; i.next != head.prev.next; i=i.next) {
+        System.out.print(i.data+" ");
+    }
+    }
+}
+  public static void main(String[] args) {
+      Queue que=new Queue();
+      //que.size();
+      System.out.println();
+      que.add(2);
+      que.add(3);
+      que.add(4);
+      que.add(5);
+      que.to();
+      System.out.println();
+      que.size();
 
+      System.out.println(que.first());
+      System.out.println( que.remove());
+     
+     // que.toString();
+
+    }
 }
