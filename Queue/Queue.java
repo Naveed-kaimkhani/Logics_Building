@@ -95,6 +95,26 @@ public boolean search(Object obj) {
     return false;
     }
 }
+public Queue reverse(Queue q1) {
+    Queue q2=new Queue();
+    for (Node i = q1.head.prev; i!=head; i=i.prev) {
+        q2.add(i.data);
+    }
+    return q2;
+}
+public Queue merge(Queue q1,Queue q2) {
+    Queue q3=new Queue();
+          //String str="";
+          for (Node i = q1.head.next; i != head.prev.next; i=i.next) {
+          
+        }
+        for (Node i = q2.head.next; i != head.prev.next; i=i.next) {
+          q2.add(i.data);
+          size++;
+          
+        }
+    
+}
   public static void main(String[] args) {
       Queue que=new Queue();
       //que.size();
