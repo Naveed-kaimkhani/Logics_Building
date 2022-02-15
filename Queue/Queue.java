@@ -95,24 +95,20 @@ public boolean search(Object obj) {
     return false;
     }
 }
-public Queue reverse(Queue q1) {
+public Queue reverse() {
     Queue q2=new Queue();
-    for (Node i = q1.head.prev; i!=head; i=i.prev) {
+    for (Node i =head.prev; i!=head.next; i=i.prev) {
         q2.add(i.data);
     }
     return q2;
 }
 public Queue merge(Queue q1,Queue q2) {
-    Queue q3=new Queue();
-          //String str="";
-          for (Node i = q1.head.next; i != head.prev.next; i=i.next) {
-          
-        }
-        for (Node i = q2.head.next; i != head.prev.next; i=i.next) {
-          q2.add(i.data);
-          size++;
-          
-        }
+    q1.head.prev.next=q2.head.next;
+    q2.head.prev=q1.head.prev;
+    q2.head.prev.next=head;
+    q1.head.prev=q2.head.prev;
+
+    return q1;
     
 }
   public static void main(String[] args) {
@@ -123,14 +119,20 @@ public Queue merge(Queue q1,Queue q2) {
       que.add(3);
       que.add(4);
       que.add(5);
-      //que.to();
-      System.out.println();
-    //System.out.println(que.size());
-
-       //System.out.println(que.first());
-    //System.out.println( que.remove());
-     
-  //   que.toString();
-    System.out.println(que.search(6));
-    }
+ 
+    
+    //   Queue que1=new Queue();
+    //   que.size();
+    //   System.out.println();
+    //   que1.add(2);
+    //   que1.add(3);
+    //   que1.add(4);
+    //   que1.add(5);
+    
+//    Queue q3 =new Queue();
+//     //   q3.
+//       //que1.merge(que, que1);
+//     q3=que.reverse();
+//       q3.to();
+     }
 }
