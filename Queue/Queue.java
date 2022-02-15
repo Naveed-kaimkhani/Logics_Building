@@ -31,10 +31,12 @@ public class Queue implements LinkedListQueue{
       head.next=new Node(data);
       head.prev=head.next;
       ++size;  
+        System.out.println(data+" added");
     }
     else{
         head.prev=head.prev.next=new Node(data,head,head.prev);
         ++size;
+        System.out.println(data+" added");
     }
 }
 @Override
@@ -43,6 +45,7 @@ public Object first() {
       throw new IllegalStateException("Queue is empty");
   } else {
       return head.next.data;
+
   }  
 }
 @Override
@@ -65,15 +68,31 @@ public Object remove() {
   }
   
   public void to() {
-    if (head.next==null) {
+    if (head.next==null) 
         throw new IllegalStateException("Queue is empty");
         
-    }
+    
     else{
           //String str="";
-    for (Node i = head.next; i.next != head.prev.next; i=i.next) {
+    for (Node i = head.next; i != head.prev.next; i=i.next) {
         System.out.print(i.data+" ");
     }
+    }
+}
+public boolean search(Object obj) {
+    if (head.next==null) 
+        {
+            throw new IllegalStateException("Queue is empty");
+            
+        }
+    else{
+          //String str="";
+    for (Node i = head.next; i != head.prev.next; i=i.next) {
+        if (obj==i.data) {
+           return true;
+        }
+    }
+    return false;
     }
 }
   public static void main(String[] args) {
@@ -84,14 +103,14 @@ public Object remove() {
       que.add(3);
       que.add(4);
       que.add(5);
-      que.to();
+      //que.to();
       System.out.println();
-      que.size();
+    //System.out.println(que.size());
 
-      System.out.println(que.first());
-      System.out.println( que.remove());
+       //System.out.println(que.first());
+    //System.out.println( que.remove());
      
-     // que.toString();
-
+  //   que.toString();
+    System.out.println(que.search(6));
     }
 }
