@@ -1,3 +1,5 @@
+import Queue.Node;
+
 //import java.util.Iterator
 interface Iterator{
     public boolean hasNext();
@@ -37,6 +39,29 @@ public abstract class AbstractColllection implements Collections {
                 it.remove();
             }
         }
-    
+        public boolean  remove(Object obj) {
+            Iterator it = Iterator();
+            if (obj==null)
+            while (it.hasNext()) {
+                if (it.next()==null) {
+                    it.remove();
+                    return true;
+                }
+                else{
+                    while (it.hasNext()) {
+                        if (obj.equals(it.next())) {
+                            it.remove();
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            }
+        }
+        public static void merge(Node head1, Node head2){
+            head1.prev.next=head2.next;
+            head2.next.prev=head1.prev;
+            head2.prev.next=head1;
+            head1.prev=head2.prev;
+        }
     }
-}
