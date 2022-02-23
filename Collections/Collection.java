@@ -7,5 +7,5 @@ public interface Collection
     public boolean isEmpty();
     public Iterator iterator();
     public boolean remove(Object obj);
-    int sixe();
+    int size();
 }

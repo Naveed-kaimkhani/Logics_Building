@@ -1,44 +1,66 @@
 
 public abstract class AbstractCollection implements Collection
 {
-    protected AbstractCollection() {}
     public abstract int size();
     public abstract Iterator iterator();
-    public boolean add(Object obj) {
+    protected AbstractCollection()  {}
+
+    public boolean add(Object obj)
+    {
         throw new UnsupportedOperationException();
     }
-    public boolean isEmpty() {
-        return (size() == 0);
-    }
-    public String toString() {
-        if(isEmpty()) {
-            return "[]";
-        }
+
+    public boolean contains(Object obj)
+    {
         Iterator it = iterator();
-        StringBuffer buff = new StringBuffer("[" + it.next());
-        while(it.hasNext()) {
-            buff.append("," + it.next());
+        if(obj==null)
+        {
+            while(it.hasNext())
+            {
+                if(it.next()==null)
+                {
+                    return true;
+                }
+            }
         }
-        return (buff + "]");
-    }
-    public void clear() {
-        for(Iterator it = iterator(); it.hasNext();) {
-            it.next();
-            it.remove();
+        else
+        {
+            while(it.hasNext())
+            {
+                if(obj.equals(it.next()))
+                {
+                    return true;
+                }
+            }
         }
+        return false;
     }
-    public boolean remove(Object obj) {
-        Iterator it = iterator();
-        if (obj == null) {
-            while (it.hasNext()) {
-                if (it.next() == null) {
+
+    public boolean isEmpty()
+    {
+        return (size()==0);
+    }
+
+    public boolean remove(Object o)
+    {
+        Iterator it=iterator();
+        if(o==null)
+        {
+            while(it.hasNext())
+            {
+                if(it.next()==null)
+                {
                     it.remove();
                     return true;
                 }
             }
-        } else {
-            while (it.hasNext()) {
-                if (obj.equals(it.next())) {
+        }
+        else
+        {
+            while(it.hasNext())
+            {
+                if(o.equals(it.next()))
+                {
                     it.remove();
                     return true;
                 }
@@ -46,4 +68,32 @@ public abstract class AbstractCollection implements Collection
         }
         return false;
     }
+
+    public String toString()
+    {
+        if(isEmpty())
+        {
+            return "[]";
+        }
+
+        Iterator it =iterator();
+        StringBuffer buf=new StringBuffer("["+it.next());
+        while(it.hasNext())
+        {
+            buf.append(", "+it.next());
+        }
+        return (buf+ "]");
+    }
+
+    public void clear()
+    {
+        for(Iterator it=iterator(); it.hasNext();)
+        {
+            it.next();
+            it.remove();
+        }
+    }
+
+
+
 }

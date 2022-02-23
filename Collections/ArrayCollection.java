@@ -1,48 +1,61 @@
 
-public abstract class ArrayCollection extends AbstractCollection
+public class ArrayCollection extends AbstractCollection
 {
     private final int LENGTH_I = 16;
     private int size;
-    private Object[] array = new Object[LENGTH_I];
-    public int size() {
+    private Object[] data = new Object[LENGTH_I];
+
+    public int size()
+    {
         return size;
     }
+
     public boolean add(Object obj)
     {
-        if(size == array.length)
+        if(size==data.length)
         {
-            // resize();
-            array[size++] = obj;
-
+            resize();
         }
+        data[size++]=obj;
         return true;
     }
-    public Iterator iterator() {
-        return new Iterator() {
-            private int i = 0;
-            private boolean okToRemove;
-            @Override
-            public boolean hasNext() { return (i < size); }
 
-            @Override
-            public Object next() {
-                if(i == size) {
-                    throw new RuntimeException();
-                }
-                okToRemove = true;
-                return array[i++];
+    public void resize()
+    {
+        Object[] temp = new Object[this.data.length*2];
+        System.arraycopy(this.data, 0, temp, 0, this.data.length);
+        this.data = temp;
+    }
+
+    public Iterator iterator()
+    {
+        return new Iterator()
+        {
+            private int i = 0;
+            private boolean okToRemove=false;
+
+            public boolean hasNext()
+            {
+                return (i<size);
             }
 
-            @Override
-            public void remove() {
-                if(!okToRemove) {
-                    throw new IllegalStateException();
+            public Object next()
+            {
+                if(i==size)
+                {
+                    throw new RuntimeException();
                 }
-                array[--i] = array[--size];
-                array[size] = null;
+                okToRemove =  true;
+                return data[i++];
+            }
+
+            public void remove()
+            {
+                if(!okToRemove) throw new IllegalStateException();
+                data[--i]  = data[--size];
+                data[size] = null;
                 okToRemove = false;
             }
         };
     }
 }
-
