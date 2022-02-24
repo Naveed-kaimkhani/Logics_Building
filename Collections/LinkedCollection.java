@@ -42,7 +42,7 @@ public class LinkedCollection  extends AbstractCollection
 
             public boolean hasNext()
             {
-                return cursor != head;
+                return (cursor != head);
             }
 
             public Object next()

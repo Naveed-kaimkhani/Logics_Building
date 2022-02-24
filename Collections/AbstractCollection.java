@@ -7,9 +7,7 @@ public abstract class AbstractCollection implements Collection {
     protected AbstractCollection() {
     }
 
-    public boolean add(Object obj) {
-        throw new UnsupportedOperationException();
-    }
+    
 
     public boolean contains(Object obj) {
         Iterator it = iterator();
