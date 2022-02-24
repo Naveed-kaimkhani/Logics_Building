@@ -11,7 +11,7 @@ public class LinkedCollection  extends AbstractCollection
             pre = next = this;
         }
 
-        public Node(Object object, Node pre, Node next)
+        public Node(Object object, Node next, Node pre)
         {
             this.object = object;
             this.pre = pre;
@@ -28,7 +28,7 @@ public class LinkedCollection  extends AbstractCollection
     }
 
     public boolean add(Object obj) {
-        head.pre = head.pre.next = new Node(obj, head.pre, head);
+        head.pre = head.pre.next = new Node(obj, head, head.pre);
         ++size;
         return true;
     }
