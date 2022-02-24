@@ -94,10 +94,10 @@ public static void main(String[] args) {
     //  System.out.println("Is stack empty: "+arraystack.isEmpty());
     // arraystack.printStack();
     // // arraystack.peak();
-    // arraystack.pop();
-    // arraystack.printStack();
+    arraystack.pop();
+     arraystack.printStack();
     //System.out.println(arraystack.toString());
-    LinkedStack temp= arraystack.toLinkedStack();
-    temp.printStack();
+    //LinkedStack temp= arraystack.toLinkedStack();
+    //tmp.printStack();
 }
 }

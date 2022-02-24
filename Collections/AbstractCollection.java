@@ -7,8 +7,6 @@ public abstract class AbstractCollection implements Collection {
     protected AbstractCollection() {
     }
 
-    
-
     public boolean contains(Object obj) {
         Iterator it = iterator();
         if (obj == null) {

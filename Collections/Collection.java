@@ -8,4 +8,5 @@ public interface Collection
     public Iterator iterator();
     public boolean remove(Object obj);
     int size();
+    
 }
