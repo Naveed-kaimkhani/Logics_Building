@@ -44,7 +44,7 @@ public class Queue implements LinkedListQueue {
         } else {
             head.prev = head.prev.next = new Node(data, head, head.prev);
             ++size;
-            System.out.println(data + " added");
+            System.out.println(data + " added ");
         }
     }
 
@@ -113,22 +113,22 @@ public class Queue implements LinkedListQueue {
         return q2;
     }
 
-    public Queue merge(Queue q1,Queue q2) {
-        q1.head.prev.next=q2.head.next;
-        q2.head.prev=q1.head;
-         q1.head.prev=q2.head.prev;     
-         q2.head.prev.next=q1.head;
-  
-    
+    public Queue merge(Queue q1, Queue q2) {
+        q1.head.prev.next = q2.head.next;
+        q2.head.prev = q1.head;
+        q1.head.prev = q2.head.prev;
+        q2.head.prev.next = q1.head;
+
         return q1;
-        
+
     }
+
     public void toArray(Queue que) {
-        int length=size;
-        Object[] arr=new Object[length];
-        int j=0;
-        for (Node i = que.head.next; i!=head.prev; i=i.next) {
-            arr[j]=i.data;
+        int length = size;
+        Object[] arr = new Object[length];
+        int j = 0;
+        for (Node i = que.head.next; i != head.prev; i = i.next) {
+            arr[j] = i.data;
             j++;
         }
         for (Object ele : arr) {
@@ -145,18 +145,18 @@ public class Queue implements LinkedListQueue {
         que.add(4);
         que.add(5);
 
-        Queue que1=new Queue();
-        //que.size();
+        Queue que1 = new Queue();
+        // que.size();
         System.out.println();
         que1.add(6);
         que1.add(7);
         que1.add(8);
         que1.add(9);
 
-        Queue q3 =new Queue();
+        Queue q3 = new Queue();
         // q3.
         que1.merge(que, que1);
-        //q3=que.reverse();
+        // q3=que.reverse();
         q3.to();
     }
 }
