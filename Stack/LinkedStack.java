@@ -2,27 +2,30 @@ import java.util.Arrays;
 
 public class LinkedStack {
     Node top;
-
+    Object data;
+    Node link;
+    int size;
     LinkedStack() {
         this.top = top;
     }
 
     class Node {
-        Node(){}
-        Object data;
-        Node link;
+        Node() {
+        }
+
     }
 
     public void push(Object x) {
         Node temp = new Node();
         // if (temp == null) {
-        //     System.out.println("Heap Overflow");
-        //     return;
+        // System.out.println("Heap Overflow");
+        // return;
         // }
         temp.data = x;
         temp.link = top;
 
         top = temp;
+            size++;
     }
 
     public boolean IsEmpty() {
@@ -50,12 +53,13 @@ public class LinkedStack {
         }
     }
 
-    public void pop() {
+    public Object pop() {
         if (top == null) {
             System.out.println("Stack is null");
-            return;
+            return -1;
         }
         top = top.link;
+        return top.data;
     }
     // public void equals(LinkedStack top) {
     // for (LinkedStack i = top; i!=null; i=i.link) {
@@ -73,10 +77,7 @@ public class LinkedStack {
     }
 
     public int size() {
-        int size = 0;
-        for (Node i = top; i != null; i = i.link) {
-            size++;
-        }
+        
         return size;
     }
 
@@ -89,7 +90,7 @@ public class LinkedStack {
     }
 
     public boolean isEqual(LinkedStack n) {
-        Node firstNode = top;
+        Node firstNode = this.top;
         Node secondNode = n.top;
         while (firstNode != null && secondNode != null) {
             if (firstNode.data != secondNode.data) {
@@ -125,6 +126,7 @@ public class LinkedStack {
         top.link = top.link.link;
     }
 
+
     public static void main(String[] args) {
         LinkedStack obj = new LinkedStack();
         // insert Stack value
@@ -133,36 +135,39 @@ public class LinkedStack {
         obj.push(33);
         obj.push(44);
 
-        LinkedStack obj2 = new LinkedStack();
-        // insert Stack value
-        obj2.push(11);
-        obj2.push(22);
-        obj2.push(33);
-        obj2.push(44);
+        // LinkedStack obj2 = new LinkedStack();
+        // // insert Stack value
+        // obj2.push(11);
+        // obj2.push(22);
+        // obj2.push(33);
+        // obj2.push(44);
 
-        System.out.println("TO Array Stack");
-        ArrayStack as = obj.toArrayStack();
-        System.out.println(as.toString());
-        System.out.println();
+        // System.out.println("TO Array Stack");
+        // ArrayStack as = obj.toArrayStack();
+        // System.out.println(as.toString());
+        // System.out.println();
 
-        System.out.println("check for equal");
-        boolean x = obj.isEqual(obj2);
-        System.out.println(x);
-        System.out.println();
+        // System.out.println("check for equal");
+        // boolean x = obj.isEqual(obj2);
+        // System.out.println(x);
+        // System.out.println();
 
-        System.out.println("Most bottom element is: " + obj.showbottom());
-        System.out.println("remove bottom");
-        obj.removebottom();
-        obj.printStack();
+        // System.out.println("Most bottom element is: " + obj.showbottom());
+        // System.out.println("remove bottom");
+        // obj.removebottom();
+        // obj.printStack();
 
-        System.out.println();
+        // System.out.println();
 
-        System.out.println("Show second element");
-        System.out.println(obj.showSecond());
-        System.out.println();
+        // System.out.println("Show second element");
+        // System.out.println(obj.showSecond());
+        // System.out.println();
 
-        System.out.println("Remove Second element");
-        obj.removeSecond();
-        obj.printStack();
+        // System.out.println("Remove Second element");
+        // obj.removeSecond();
+        // obj.printStack();
+        LinkedStack revers = new LinkedStack();
+        revers = reverse(obj);
+        revers.printStack();
     }
 }

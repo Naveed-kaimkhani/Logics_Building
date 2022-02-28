@@ -1,3 +1,5 @@
+import java.rmi.server.ObjID;
+
 interface LinkedListQueue {
     public void add(Object obj);
 
@@ -113,12 +115,25 @@ public class Queue implements LinkedListQueue {
 
     public Queue merge(Queue q1,Queue q2) {
         q1.head.prev.next=q2.head.next;
-        q2.head.prev=q1.head.prev;
-        q2.head.prev.next=head;
-        q1.head.prev=q2.head.prev;
+        q2.head.prev=q1.head;
+         q1.head.prev=q2.head.prev;     
+         q2.head.prev.next=q1.head;
+  
     
         return q1;
         
+    }
+    public void toArray(Queue que) {
+        int length=size;
+        Object[] arr=new Object[length];
+        int j=0;
+        for (Node i = que.head.next; i!=head.prev; i=i.next) {
+            arr[j]=i.data;
+            j++;
+        }
+        for (Object ele : arr) {
+            System.out.println(ele);
+        }
     }
 
     public static void main(String[] args) {
