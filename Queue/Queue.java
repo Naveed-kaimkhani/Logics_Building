@@ -40,7 +40,7 @@ public class Queue implements LinkedListQueue {
             head.next = new Node(data);
             head.prev = head.next;
             ++size;
-            System.out.println(data + " added");
+            System.out.println(data + " added ");
         } else {
             head.prev = head.prev.next = new Node(data, head, head.prev);
             ++size;

@@ -109,7 +109,7 @@ public class Node{
         public static int findlowest(Node n) {
             Node i;
             int min=n.data;
-            for (i = n; i!=null; i=i.next) {
+            for (i = n;i!=null; i=i.next) {
                 if(i.data<min){
                     min=i.data;
                 }
