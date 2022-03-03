@@ -164,7 +164,7 @@ public class Node{
             Node p=start2; 
             p.next=new Node(180);
             p=p.next;                      
-            p.next=new Node(210);             //Start.next=new Node(2);
+            p.next=new Node(210);             
             p=p.next;                          //Start.next.next=new Node(3);
 
             
