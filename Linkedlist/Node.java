@@ -167,8 +167,6 @@ public class Node{
             p.next=new Node(210);             //Start.next=new Node(2);
             p=p.next;                          //Start.next.next=new Node(3);
 
-            // delete(start, 90);
-            // AcessNode(start);
             
             Node co=clone(start);
             AcessNode(co);
