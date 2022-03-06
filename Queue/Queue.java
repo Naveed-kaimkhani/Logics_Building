@@ -83,7 +83,6 @@ public class Queue implements LinkedListQueue {
             throw new IllegalStateException("Queue is empty");
 
         else {
-            // String str="";
             for (Node i = head.next; i != head.prev.next; i = i.next) {
                 System.out.print(i.data + " ");
             }
