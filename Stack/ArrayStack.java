@@ -84,7 +84,6 @@ public static void size() {
 public static void main(String[] args) {
     ArrayStack arraystack=new ArrayStack(5);
     //arraystack.size();
-    // System.out.println("Is stack empty: "+arraystack.isEmpty());
     arraystack.push(1);
     arraystack.push(2);
     arraystack.push(3);
