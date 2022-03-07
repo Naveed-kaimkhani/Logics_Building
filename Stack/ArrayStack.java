@@ -33,7 +33,6 @@ public class ArrayStack implements Stack{
     }
     @Override
     public void push(Object element) {
-        // TODO Auto-generated method stub
         if (top==a.length-1) {
             int newsize= a.length+1;
             a=Arrays.copyOf(a,newsize);
