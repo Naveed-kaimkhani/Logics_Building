@@ -82,7 +82,7 @@ public static void size() {
     System.out.println(size);
 }
 public static void main(String[] args) {
-    ArrayStack arraystack=new ArrayStack(5);
+    ArrayStack arraystack = new ArrayStack(5);
     //arraystack.size();
     arraystack.push(1);
     arraystack.push(2);
