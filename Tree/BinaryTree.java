@@ -1,3 +1,8 @@
+// tree is full or not
+//swap left right
+//findout the right most node of left tree
+//findout left most node of right sub tree
+
 public class BinaryTree {
     Object root;
     BinaryTree left, right;
@@ -49,7 +54,36 @@ public class BinaryTree {
         }
         return str + "";
     }
-
+    public boolean isLeaf() {
+if(left==null && right==null) return true;
+return false;
+    
+    }
+    public int size(){
+        if(left==null && right==null) return 1;
+        if(left==null)return 1+right.size();
+        return 1+left.size()+right.size();
+    }
+    public int height() {
+        if (root==null) return -1;
+        int leftn=0,rightn=0;
+        if(left!=null)leftn=1+left.height();
+        if(right!=null)rightn=1+right.height();
+        return leftn>rightn?leftn:rightn;
+    }
+    public boolean contains(Object t){
+        if(root==t)return true;
+        boolean present=false;
+        if(left!=null){
+            if(left.toString().contains(t.toString())) return true;
+            present=left.contains(t);
+        }
+        if(right!=null){
+            if(right.toString().contains(t.toString()))return true;
+            present =right.contains(t);
+        }
+        return present;
+    }
     public static void main(String[] args) {
 
         BinaryTree treeD = new BinaryTree("D");
