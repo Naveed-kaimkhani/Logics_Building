@@ -11,10 +11,22 @@ public class BinaryTree {
         this.root = root;
     }
 
+    public BinaryTree() {
+        this.root = null;
+    }
+
     public BinaryTree(Object root, BinaryTree left, BinaryTree right) {
         this.root = root;
         this.left = left;
         this.right = right;
+    }
+
+    public static void swap(BinaryTree Btree) {
+        Btree.setRight(Btree.left);
+        Btree.setLeft(Btree.right);
+
+        System.out.println("Tree after Swaped");
+        System.out.println(Btree.toString());
     }
 
     public void setRoot(Object root) {
@@ -42,7 +54,7 @@ public class BinaryTree {
     }
 
     @Override
-    public String toString() {  //Inorder
+    public String toString() { // Inorder
         StringBuffer str = new StringBuffer("");
         if (left != null) {
             str.append(left + ",");
@@ -56,21 +68,61 @@ public class BinaryTree {
     }
 
     public static void preOrder(BinaryTree BTree) {
-        if (BTree==null) {
-                return;
+        if (BTree == null) {
+            return;
         }
 
         System.out.println(BTree.root);
         preOrder(BTree.left);
         preOrder(BTree.right);
     }
-    public static void PostOrder(BinaryTree Btree){
-        if (Btree==null) {
-            return ;
+
+    public static boolean isFull(BinaryTree BTree) {
+        if (BTree == null) {
+            return true;
+        }
+
+        if (BTree.right == null && BTree.left == null) {
+            return true;
+        }
+      return isFull(BTree.left) && isFull(BTree.right);
+
+    }
+
+    public static void PostOrder(BinaryTree Btree) {
+        if (Btree == null) {
+            return;
         }
         PostOrder(Btree.left);
         PostOrder(Btree.right);
         System.out.println(Btree.root);
+    }
+
+    public static void RightmostNode_Of_LeftSubTree(BinaryTree Btree) {
+        // BinaryTree leftOFBtree=Btree.left;
+        if (Btree.right == null) {
+            System.out.println(Btree.root);
+            return;
+        }
+        RightmostNode_Of_LeftSubTree(Btree.right);
+    }
+
+    public static void LeftmostNode_Of_RightSubTree(BinaryTree Btree) {
+        // BinaryTree rightOFBtree=Btree.right;
+        if (Btree.left == null) {
+            System.out.println(Btree.root);
+            return;
+        }
+        LeftmostNode_Of_RightSubTree(Btree.left);
+    }
+
+    public static int CountNodes(BinaryTree Btree) {
+        if (Btree == null) {
+            return 0;
+        }
+        int rightCount = CountNodes(Btree.right);
+        int leftCount = CountNodes(Btree.left);
+        return rightCount + leftCount + 1;
     }
 
     public boolean isLeaf() {
@@ -118,14 +170,21 @@ public class BinaryTree {
 
     public static void main(String[] args) {
 
-        BinaryTree treeD = new BinaryTree("D");
-
-        BinaryTree treeE = new BinaryTree("E");
-        BinaryTree treeB = new BinaryTree("B");
+        BinaryTree teD = new BinaryTree();
+        BinaryTree treeX = new BinaryTree("X");
+        BinaryTree treeD = new BinaryTree("D"); //    A */
+        BinaryTree treeE = new BinaryTree("E"); // B       C
+        BinaryTree treeB = new BinaryTree("B"); //       D   E
         BinaryTree treeC = new BinaryTree("C", treeD, treeE);
         BinaryTree tree = new BinaryTree("A", treeB, treeC);
         // System.out.println(tree);
-        //preOrder(tree); // A , B , C , D , E
-        PostOrder(tree); // B ,D,E,C,A
+        // preOrder(tree); // A , B , C , D , E
+        // PostOrder(tree); // B ,D,E,C,A
+        // System.out.println(CountNodes(tree));
+        // System.out.println(tree.toString());
+        // swap(tree);
+       // RightmostNode_Of_LeftSubTree(tree.left);
+        // LeftmostNode_Of_RightSubTree(tree.right);
+        System.out.println(isFull(tree));
     }
 }
