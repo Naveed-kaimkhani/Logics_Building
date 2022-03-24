@@ -42,7 +42,7 @@ public class BinaryTree {
     }
 
     @Override
-    public String toString() {
+    public String toString() {  //Inorder
         StringBuffer str = new StringBuffer("");
         if (left != null) {
             str.append(left + ",");
@@ -54,36 +54,68 @@ public class BinaryTree {
         }
         return str + "";
     }
-    public boolean isLeaf() {
-if(left==null && right==null) return true;
-return false;
-    
-    }
-    public int size(){
-        if(left==null && right==null) return 1;
-        if(left==null)return 1+right.size();
-        return 1+left.size()+right.size();
-    }
-    public int height() {
-        if (root==null) return -1;
-        int leftn=0,rightn=0;
-        if(left!=null)leftn=1+left.height();
-        if(right!=null)rightn=1+right.height();
-        return leftn>rightn?leftn:rightn;
-    }
-    public boolean contains(Object t){
-        if(root==t)return true;
-        boolean present=false;
-        if(left!=null){
-            if(left.toString().contains(t.toString())) return true;
-            present=left.contains(t);
+
+    public static void preOrder(BinaryTree BTree) {
+        if (BTree==null) {
+                return;
         }
-        if(right!=null){
-            if(right.toString().contains(t.toString()))return true;
-            present =right.contains(t);
+
+        System.out.println(BTree.root);
+        preOrder(BTree.left);
+        preOrder(BTree.right);
+    }
+    public static void PostOrder(BinaryTree Btree){
+        if (Btree==null) {
+            return ;
+        }
+        PostOrder(Btree.left);
+        PostOrder(Btree.right);
+        System.out.println(Btree.root);
+    }
+
+    public boolean isLeaf() {
+        if (left == null && right == null)
+            return true;
+        return false;
+
+    }
+
+    public int size() {
+        if (left == null && right == null)
+            return 1;
+        if (left == null)
+            return 1 + right.size();
+        return 1 + left.size() + right.size();
+    }
+
+    public int height() {
+        if (root == null)
+            return -1;
+        int leftn = 0, rightn = 0;
+        if (left != null)
+            leftn = 1 + left.height();
+        if (right != null)
+            rightn = 1 + right.height();
+        return leftn > rightn ? leftn : rightn;
+    }
+
+    public boolean contains(Object t) {
+        if (root == t)
+            return true;
+        boolean present = false;
+        if (left != null) {
+            if (left.toString().contains(t.toString()))
+                return true;
+            present = left.contains(t);
+        }
+        if (right != null) {
+            if (right.toString().contains(t.toString()))
+                return true;
+            present = right.contains(t);
         }
         return present;
     }
+
     public static void main(String[] args) {
 
         BinaryTree treeD = new BinaryTree("D");
@@ -92,6 +124,8 @@ return false;
         BinaryTree treeB = new BinaryTree("B");
         BinaryTree treeC = new BinaryTree("C", treeD, treeE);
         BinaryTree tree = new BinaryTree("A", treeB, treeC);
-        System.out.println(tree);
+        // System.out.println(tree);
+        //preOrder(tree); // A , B , C , D , E
+        PostOrder(tree); // B ,D,E,C,A
     }
 }
