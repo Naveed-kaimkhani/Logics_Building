@@ -1,9 +1,14 @@
-// tree is full or not
-//swap left right
-//findout the right most node of left tree
-//findout left most node of right sub tree
-//
-public class BinaryTree {
+import javax.naming.spi.ObjectFactory;
+
+/* Binary Search Tree:
+            For each key in the tree. 
+            all the key in its left subtree are less than 
+            and all the keys in the right subtree are greater. 
+ */
+
+ // replace with the most smallest left element of right sub tree
+ //find closest larger ancestor
+ public class BinaryTree {
     Object root;
     BinaryTree left, right;
 
@@ -99,7 +104,7 @@ public class BinaryTree {
     }
 
     public static void RightmostNode_Of_LeftSubTree(BinaryTree Btree) {
-        // BinaryTree leftOFBtree=Btree.left;
+       //  BinaryTree leftOFBtree=Btree.left;
         if (Btree.right == null) {
             System.out.println(Btree.root);
             return;
@@ -125,6 +130,14 @@ public class BinaryTree {
         return rightCount + leftCount + 1;
     }
 
+    public static int  SumNodes(BinaryTree Btree) {
+        if (Btree == null) {
+            return 0;
+        }
+        int rightsum = SumNodes(Btree.right);
+        int leftsum = SumNodes(Btree.left);
+        return rightsum+leftsum+Integer.parseInt(Btree.root.toString());
+    }
     public boolean isLeaf() {
         if (left == null && right == null)
             return true;
@@ -167,7 +180,28 @@ public class BinaryTree {
         }
         return present;
     }
-
+// public void insertion(BinaryTree t, int key) {
+//     if (t==null) {
+        
+//     }
+//     if (key<root.key) {
+        
+//     }
+//     if (key>root.key) {
+        
+//     }
+// }
+// public boolean search(BinaryTree t, Object key) {
+//     if (t==null) {
+//         return false;
+//     }
+//     if (key.equals(t.root)) {
+//         //got left
+//     }
+//     if (key>root.key) {
+//         //go right
+//     }
+// }
     public static void main(String[] args) {
 
         BinaryTree teD = new BinaryTree();
@@ -177,14 +211,15 @@ public class BinaryTree {
         BinaryTree treeB = new BinaryTree("B"); //       D   E
         BinaryTree treeC = new BinaryTree("C", treeD, treeE);
         BinaryTree tree = new BinaryTree("A", treeB, treeC);
+       
         // System.out.println(tree);
         // preOrder(tree); // A , B , C , D , E
         // PostOrder(tree); // B ,D,E,C,A
         // System.out.println(CountNodes(tree));
-        // System.out.println(tree.toString());
-        // swap(tree);
+         //System.out.println(tree.toString());
+         //swap(tree);
        // RightmostNode_Of_LeftSubTree(tree.left);
         // LeftmostNode_Of_RightSubTree(tree.right);
-        System.out.println(isFull(tree));
+       // System.out.println(isFull(tree));
     }
 }
