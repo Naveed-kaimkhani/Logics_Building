@@ -220,6 +220,5 @@ import javax.naming.spi.ObjectFactory;
          //swap(tree);
        // RightmostNode_Of_LeftSubTree(tree.left);
         // LeftmostNode_Of_RightSubTree(tree.right);
-       // System.out.println(isFull(tree));
     }
 }
