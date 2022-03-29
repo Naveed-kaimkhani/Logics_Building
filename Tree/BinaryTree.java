@@ -1,3 +1,5 @@
+import java.lang.annotation.Retention;
+
 import javax.naming.spi.ObjectFactory;
 
 /* Binary Search Tree:
@@ -194,15 +196,18 @@ import javax.naming.spi.ObjectFactory;
 // public boolean search(BinaryTree t, Object key) {
 //     if (t==null) {
 //         return false;
+//     } 
+//     if (Integer.parseInt(key.toString())<Integer.parseInt(t.root.toString())) {
+//        return search(t.left, key);
 //     }
-//     if (key.equals(t.root)) {
-//         //got left
-//     }
-//     if (key>root.key) {
+//     else (Integer.parseInt(key.toString())>Integer.parseInt(t.root.toString())) {
 //         //go right
+//        return search(t.right, key);
 //     }
+//     return false;
 // }
-    public static void main(String[] args) {
+    
+public static void main(String[] args) {
 
         BinaryTree teD = new BinaryTree();
         BinaryTree treeX = new BinaryTree("X");
