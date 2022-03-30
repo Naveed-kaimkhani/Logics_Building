@@ -28,7 +28,7 @@ public class AVLTree {
         return size()>oldsize;
     }
 public AVLTree grow(int key){
-    if (this=NIL) {
+    if (this==NIL) {
      return new AVLTree(key);   
     }
     if(key==this.key)return this;

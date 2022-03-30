@@ -217,12 +217,10 @@ public static void main(String[] args) {
         BinaryTree treeC = new BinaryTree("C", treeD, treeE);
         BinaryTree tree = new BinaryTree("A", treeB, treeC);
        
-        // System.out.println(tree);
         // preOrder(tree); // A , B , C , D , E
         // PostOrder(tree); // B ,D,E,C,A
         // System.out.println(CountNodes(tree));
          //System.out.println(tree.toString());
-         //swap(tree);
        // RightmostNode_Of_LeftSubTree(tree.left);
         // LeftmostNode_Of_RightSubTree(tree.right);
     }
