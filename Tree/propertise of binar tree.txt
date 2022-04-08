@@ -1,4 +1,0 @@
-Height : it is the path from root node to leaf.
-Size: it is the total no. of nodes in  a tree.
-Depth: it is the number of node from that node to root node 
-Degree:it is the hihgest no. of child of a node in a tree.
