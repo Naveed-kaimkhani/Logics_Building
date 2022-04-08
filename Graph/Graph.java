@@ -1,5 +1,5 @@
 //learn Djkstra algorithm
-
+//learn hash table
 public class Graph {
 	int size;
 	String[] vertices;
