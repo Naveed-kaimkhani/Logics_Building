@@ -1,7 +1,7 @@
 //make the main method 
 
 public class HashTable {
-    private Entry entries=new Entry[11];
+    private Entry entries[]=new Entry[11];
     private int size;
     private  class Entry{
         Object Key,value;
@@ -9,11 +9,11 @@ public class HashTable {
             Key=k;
             value=v;
         }
-        private int hash(Object key){
-            //return (Key.hashCode()&&07FFFFFF)
-        }
-
+       
      }
+     private int hash(Object key){
+        return (Key.hashCode()& 0x7FFFFFF);
+    }
       public int size(){
             return size;
         }
@@ -21,7 +21,7 @@ public class HashTable {
             entries[hash(key)]=new Entry(key,value);
             ++size;
         }
-    } 
+
 public Object get (Object key){
     return Entries[hash(key)].value;
 } 
