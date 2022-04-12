@@ -96,7 +96,7 @@ import javax.naming.spi.ObjectFactory;
 
     }
 
-    public static void PostOrder(BinaryTree Btree) {
+    public static void PostOrder(BinaryTree Btree) {//left right root
         if (Btree == null) {
             return;
         }
@@ -140,13 +140,15 @@ import javax.naming.spi.ObjectFactory;
         int leftsum = SumNodes(Btree.left);
         return rightsum+leftsum+Integer.parseInt(Btree.root.toString());
     }
+
+    //leaf of a tree is a node with no children
     public boolean isLeaf() {
         if (left == null && right == null)
             return true;
         return false;
 
     }
-
+//size of a tree is the number of nodes in the tree
     public int size() {
         if (left == null && right == null)
             return 1;
@@ -155,6 +157,7 @@ import javax.naming.spi.ObjectFactory;
         return 1 + left.size() + right.size();
     }
 
+    //height of a tree is the number of edges on the longest path from the root to a leaf
     public int height() {
         if (root == null)
             return -1;
