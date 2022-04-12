@@ -22,16 +22,36 @@ public class Graph {
 		}
 		return a.length;
 	}
-	public String toString() {
-		String str="Contents of Graph is:\n";
-		for(int i=0;i<vertices.length;i++) {
-			for(int j=0;j<vertices.length;j++) {
-				if(a[i][j]==true) {
-					str+=("Vertex: "+i+"==>"+j+"\n");
-				}
-			}
+	// public String toString() {
+	// 	String str="Contents of Graph is:\n";
+	// 	for(int i=0;i<vertices.length;i++) {
+	// 		for(int j=0;j<vertices.length;j++) {
+	// 			if(a[i][j]==true) {
+	// 				str+=("Vertex: "+i+"==>"+j+"\n");
+	// 			}
+	// 		}
+	// 	}
+	// 	return str;
+	// }
+	
+	public String toString(){
+		if(size==0)return "()";
+		StringBuffer buf=new StringBuffer("{"+vertex(0));
+		for (int i = 1; i < size; i++) {
+			buf.append(", "+vertex(i));
 		}
-		return str;
+		return buf+"}";
+	}
+	private String vertex(int i){
+			StringBuffer buf=new StringBuffer(vertices[i]+":");
+			for (int j = 0; j <size; j++) {
+				if (a[i][j]) {
+					buf.append(" "+vertices[j]);
+				}
+				
+				}
+			
+			return buf+"";
 	}
 	public static void main(String[] args) {
 		int vertices = 5;
