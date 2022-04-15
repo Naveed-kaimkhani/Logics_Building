@@ -24,6 +24,7 @@ public class HashTable2 {
             if (e.key.equals(key)) {
                 return e.value;
             }
+        }
             return null;
         }
         public Object put(Object k ,Object v){
