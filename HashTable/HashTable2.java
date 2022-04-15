@@ -38,7 +38,24 @@ public class HashTable2 {
             entries[h]=new Entry(k, v, entries[n]));
             ++size;
             return null;
-        }
+        
     }
-    }
+        public Object remove(Object key){
+            int h =hash(key);
+            for (Entry  e = entries[h], prev =null; e!=null;prev=e,e=e.next) {
+                if (e.key.equals(key)) {
+                    Object oldvalue=e.value;
+                    if (prev=null) {
+                        entries[h]=e.next;
+
+                    }
+                    else{
+                        prev.next=e.next;
+                        --size;
+                        return oldvalue;
+                    }
+                }
+                    return null;
+            }
+        }    
 }
