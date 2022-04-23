@@ -1,15 +1,11 @@
-import java.lang.annotation.Retention;
-
-import javax.naming.spi.ObjectFactory;
 
 /* Binary Search Tree:
-            For each key in the tree. 
-            all the key in its left subtree are less than 
+            For each node in the tree. 
+            all the node in its left subtree or right subtree are less than or equal to 2
             and all the keys in the right subtree are greater. 
  */
 
- // replace with the most smallest left element of right sub tree
- //find closest larger ancestor
+
  public class BinaryTree {
     Object root;
     BinaryTree left, right;
@@ -26,14 +22,6 @@ import javax.naming.spi.ObjectFactory;
         this.root = root;
         this.left = left;
         this.right = right;
-    }
-
-    public static void swap(BinaryTree Btree) {
-        Btree.setRight(Btree.left);
-        Btree.setLeft(Btree.right);
-
-        System.out.println("Tree after Swaped");
-        System.out.println(Btree.toString());
     }
 
     public void setRoot(Object root) {
@@ -85,6 +73,10 @@ import javax.naming.spi.ObjectFactory;
     }
 
     public static boolean isFull(BinaryTree BTree) {
+        /**
+         * A full Binary tree is a special type of binary tree 
+         * in which every parent node/internal node has either two or no children
+         */
         if (BTree == null) {
             return true;
         }
@@ -132,15 +124,6 @@ import javax.naming.spi.ObjectFactory;
         return rightCount + leftCount + 1;
     }
 
-    public static int  SumNodes(BinaryTree Btree) {
-        if (Btree == null) {
-            return 0;
-        }
-        int rightsum = SumNodes(Btree.right);
-        int leftsum = SumNodes(Btree.left);
-        return rightsum+leftsum+Integer.parseInt(Btree.root.toString());
-    }
-
     //leaf of a tree is a node with no children
     public boolean isLeaf() {
         if (left == null && right == null)
@@ -185,31 +168,7 @@ import javax.naming.spi.ObjectFactory;
         }
         return present;
     }
-// public void insertion(BinaryTree t, int key) {
-//     if (t==null) {
-        
-//     }
-//     if (key<root.key) {
-        
-//     }
-//     if (key>root.key) {
-        
-//     }
-// }
-// public boolean search(BinaryTree t, Object key) {
-//     if (t==null) {
-//         return false;
-//     } 
-//     if (Integer.parseInt(key.toString())<Integer.parseInt(t.root.toString())) {
-//        return search(t.left, key);
-//     }
-//     else (Integer.parseInt(key.toString())>Integer.parseInt(t.root.toString())) {
-//         //go right
-//        return search(t.right, key);
-//     }
-//     return false;
-// }
-  //  
+  
 public static void main(String[] args) {
 
         BinaryTree teD = new BinaryTree();
@@ -219,7 +178,8 @@ public static void main(String[] args) {
         BinaryTree treeB = new BinaryTree("B"); //       D   E
         BinaryTree treeC = new BinaryTree("C", treeD, treeE);
         BinaryTree tree = new BinaryTree("A", treeB, treeC);
-       
+        System.out.println(tree.height());
+        //  System.out.println(size(tree));
         // preOrder(tree); // A , B , C , D , E
         // PostOrder(tree); // B ,D,E,C,A
         // System.out.println(CountNodes(tree));

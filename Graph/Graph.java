@@ -22,17 +22,7 @@ public class Graph {
 		}
 		return a.length;
 	}
-	// public String toString() {
-	// 	String str="Contents of Graph is:\n";
-	// 	for(int i=0;i<vertices.length;i++) {
-	// 		for(int j=0;j<vertices.length;j++) {
-	// 			if(a[i][j]==true) {
-	// 				str+=("Vertex: "+i+"==>"+j+"\n");
-	// 			}
-	// 		}
-	// 	}
-	// 	return str;
-	// }
+
 	
 	public String toString(){
 		if(size==0)return "()";
@@ -54,7 +44,6 @@ public class Graph {
 			return buf+"";
 	}
 	public static void main(String[] args) {
-		int vertices = 5;
 		String[] arg= {"A","B","C","D","E"};
 		Graph graph=new Graph(arg);
 		graph.add("A" , "B");
