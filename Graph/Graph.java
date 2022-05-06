@@ -8,7 +8,7 @@ public class Graph {
 		size=args.length;
 		vertices=new String[size];
 		System.arraycopy(args, 0, vertices, 0, size);
-		a=new boolean[size][args.length];
+		a=new boolean[size][size];
 	}
 	public void add(String v,String w) {
 		int i=index(v);
@@ -38,7 +38,6 @@ public class Graph {
 				if (a[i][j]) {
 					buf.append(" "+vertices[j]);
 				}
-				
 				}
 			
 			return buf+"";
