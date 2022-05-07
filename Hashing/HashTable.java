@@ -8,9 +8,9 @@ public class HashTable {
     private static final HashTable.Entry NIL = null;
     private Entry[] entries;
     static int size, used;
-    private float LoadFactor;
+    private double LoadFactor;
 
-    HashTable(int capacity, int LoadFactor) {
+    HashTable(int capacity, double LoadFactor) {
         entries = new Entry[capacity];
         this.LoadFactor = LoadFactor;
     }
@@ -91,14 +91,14 @@ public class HashTable {
         Entry[] oldentries = entries;
         entries = new Entry[2 * oldentries.length];
         for (int k = 0; k < oldentries.length; k++) {
-            Entry entry = new oldentries[k];
+            Entry entry = oldentries[k];
 
             if (entry == null)
                 continue;
             int h = hash(entry.Key);
 
             for (int i = 0; i < entries.length; i++) {
-                int j = hash(h, i) % entries.length;
+                int j = (h+i)% entries.length;
                 if (entries[j] == null) {
                     entries[j] = entry;
                     break;
@@ -111,9 +111,11 @@ public class HashTable {
     public static void main(String[] args) {
         System.out.println(7 % 10);
         System.out.println(17 % 10);
-        // HashTable ht=new HashTable(10);
-        // ht.put(7,5);
-        // ht.put(17,6);
-
+        System.out.println("Both the above key have the same modulus which leads to collision \nAnd we are solving that issue with linear probing");
+        HashTable ht=new HashTable(10,0.75);
+        ht.put(7,5);
+        ht.put(17,6);
+        System.out.println(ht.get(7));
+        System.out.println(ht.get(17));
     }
 }
