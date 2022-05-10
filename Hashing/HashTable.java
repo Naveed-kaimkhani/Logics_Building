@@ -1,6 +1,3 @@
-import java.util.Hashtable;
-
-import javax.swing.text.AbstractDocument.BranchElement;
 
 // Hashing with linear probing
 
@@ -42,9 +39,9 @@ public class HashTable {
         if (used > LoadFactor * entries.length)
             rehash();
         int h = hash(key);
+
         for (int i = 0; i < entries.length; i++) {
             int j = (h + i) % entries.length;
-            // int j = nextProbe(h,i);
             Entry entry = entries[j];
             if (entry == null || entries[j] == NIL) {
                 entries[j] = new Entry(key, value);
@@ -75,7 +72,7 @@ public class HashTable {
         int h = hash(key);
         for (int i = 0; i < entries.length; i++) {
             int j = (h + i) % entries.length;
-            if (entries[i] == null)
+            if (entries[j] == null)
                 break;
             if (entries[j].Key.equals(key)) {
                 Object value = entries[j].value;
@@ -98,7 +95,7 @@ public class HashTable {
             int h = hash(entry.Key);
 
             for (int i = 0; i < entries.length; i++) {
-                int j = (h+i)% entries.length;
+                int j = (h + i) % entries.length;
                 if (entries[j] == null) {
                     entries[j] = entry;
                     break;
@@ -112,9 +109,9 @@ public class HashTable {
         System.out.println(7 % 10);
         System.out.println(17 % 10);
         System.out.println("Both the above key have the same modulus which leads to collision \nAnd we are solving that issue with linear probing");
-        HashTable ht=new HashTable(10,0.75);
-        ht.put(7,5);
-        ht.put(17,6);
+        HashTable ht = new HashTable(10, 0.75);
+        ht.put(7, 5);
+        ht.put(17, 6);
         System.out.println(ht.get(7));
         System.out.println(ht.get(17));
     }
