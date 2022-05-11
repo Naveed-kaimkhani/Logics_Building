@@ -57,7 +57,7 @@
         str.append(root);
         if (right != null) {
             str.append("," + right);
-
+ 
         }
         return str + "";
     }
@@ -78,7 +78,7 @@
          * in which every parent node/internal node has either two or no children
          */
         if (BTree == null) {
-            return true;
+            return false;
         }
 
         if (BTree.right == null && BTree.left == null) {
@@ -178,13 +178,13 @@ public static void main(String[] args) {
         BinaryTree treeB = new BinaryTree("B"); //       D   E
         BinaryTree treeC = new BinaryTree("C", treeD, treeE);
         BinaryTree tree = new BinaryTree("A", treeB, treeC);
-        System.out.println(tree.height());
-        //  System.out.println(size(tree));
+        //System.out.println(tree.height());
+         // System.out.println(tree.size());
         // preOrder(tree); // A , B , C , D , E
         // PostOrder(tree); // B ,D,E,C,A
         // System.out.println(CountNodes(tree));
-       // RightmostNode_Of_LeftSubTree(tree.left);
-        // LeftmostNode_Of_RightSubTree(tree.right);
-        RightmostNode_Of_LeftSubTree(tree);
+       //RightmostNode_Of_LeftSubTree(tree.left);
+        //LeftmostNode_Of_RightSubTree(tree.right);
+       
     }
 }
